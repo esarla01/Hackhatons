@@ -168,9 +168,6 @@ if __name__ == "__main__":
         'race': ['Black People', 'White People', 'Asian People', 'Middle Eastern People', 'African People', 'Brown People', 'Latino People']
     }
 
-    history1.extend(history2)  
-    messages_list = history1  
-
     sentences, labels = [], []
     
     # Generate sentences
@@ -183,14 +180,3 @@ if __name__ == "__main__":
     # Save sentences to pandas DataFrame
     df = save_to_pandas(sentences, labels)
     df.to_csv("stereotypes3.csv")
-
-    num_api_requests = 0
-    num_api_requests = len(history1) + len(history2)
-
-    # Calculate carbon footprint with the correct number of API requests
-    total_tokens, energy_from_tokens, energy_from_api, total_energy, carbon_footprint = calculate_carbon_footprint_with_api(messages_list, num_api_requests)
-    print(f"Total tokens processed: {total_tokens}")
-    print(f"Energy from tokens: {energy_from_tokens:.4f} kWh")
-    print(f"Energy from API requests: {energy_from_api:.4f} kWh")
-    print(f"Total energy consumed: {total_energy:.4f} kWh")
-    print(f"Estimated carbon footprint: {carbon_footprint:.4f} kg CO₂e")
